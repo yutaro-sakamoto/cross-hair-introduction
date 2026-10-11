@@ -1,0 +1,22 @@
+[project]
+name = "cross-hair-introduction"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Yutaro Sakamoto", email = "mail@yutaro-sakamoto.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+cross-hair-introduction = "cross_hair_introduction:main"
+
+[build-system]
+requires = ["uv_build>=0.12.22,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "crosshair-tool>=0.0.111",
+]
