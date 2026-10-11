@@ -1,5 +1,6 @@
 import dataclasses
-from typing import List, Tuple, TypeVar
+from enum import Enum
+from typing import TypeVar
 
 # crosshair: on
 
@@ -29,8 +30,36 @@ class ChessPiece:
 
 T = TypeVar('T')
 
-def consecutive_pairs(x: List[T]) -> List[Tuple[T, T]]:
+#def consecutive_pairs(x: List[T]) -> List[Tuple[T, T]]:
+#    '''
+#    post: True
+#    '''
+#    return [(x[i], x[i + 1]) for i in range(len(x))]
+
+class VehicleType(Enum):
+    CAR = 0
+    BICYCLE = 1
+
+#@dataclasses.dataclass(init=False)
+class Vehicle:
     '''
-    post: True
+    inv: (self.fuel_level is None) == (self.kind == VehicleType.BICYCLE)
     '''
-    return [(x[i], x[i + 1]) for i in range(len(x))]
+    kind: VehicleType
+    fuel_level: float | None
+
+def can_use(vehicle: Vehicle) -> bool:
+    '''
+    post:True
+    '''
+    if vehicle.kind is VehicleType.BICYCLE:
+        return True
+    assert vehicle.fuel_level is not None
+    return vehicle.fuel_level > 0.0
+
+def csv_first_column(lines: list[str]) -> list[str]:
+    '''
+        pre: all(',' in line for line in lines)
+        post: __return__ == [line.split(',')[0] for line in lines]
+    '''
+    return [line[:line.index(',')] for line in lines]
