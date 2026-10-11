@@ -1,4 +1,5 @@
 import dataclasses
+from typing import List, Tuple, TypeVar
 
 # crosshair: on
 
@@ -22,6 +23,14 @@ class ChessPiece:
         '''
         raise NotImplementedError
 
-class Rook(ChessPiece):
-    def can_move_to(self, x: int, y: int) -> bool:
-        return (x == self.x) or (y == self.y)
+#class Rook(ChessPiece):
+#    def can_move_to(self, x: int, y: int) -> bool:
+#        return (x == self.x) or (y == self.y)
+
+T = TypeVar('T')
+
+def consecutive_pairs(x: List[T]) -> List[Tuple[T, T]]:
+    '''
+    post: True
+    '''
+    return [(x[i], x[i + 1]) for i in range(len(x))]
