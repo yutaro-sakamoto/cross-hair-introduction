@@ -1,4 +1,5 @@
 import dataclasses
+
 # crosshair: on
 
 def average(numbers: list[float]) -> float:

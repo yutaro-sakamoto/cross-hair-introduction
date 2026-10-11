@@ -7,7 +7,9 @@ authors = [
     { name = "Yutaro Sakamoto", email = "mail@yutaro-sakamoto.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "ruff>=0.17.0",
+]
 
 [project.scripts]
 cross-hair-introduction = "cross_hair_introduction:main"
